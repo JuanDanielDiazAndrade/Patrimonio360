@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Patrimonio360°</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style data-purpose="typography">
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #111827;}
+        p {
+            color: #4b5563;}
+    </style>
+</head>
+
+<body class="bg-white">
+<header class="container mx-auto px-4 py-6 flex items-center justify-between" data-purpose="site-header">
+    <div class="font-bold text-xl tracking-tight">
+        Patrimonio360°
+    </div>
+
+    <nav class="hidden md:flex space-x-8 items-center" data-purpose="primary-navigation">
+        <a class="text-gray-900 font-medium hover:text-gray-600" href="#podras_ver">Explorar</a>
+        <a class="text-gray-900 font-medium hover:text-gray-600" href="#">Acerca de</a>
+        <a class="bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition" href="login.html">Iniciar sesión</a>
+    </nav>
+</header>
+
+<main>
+<section class="container mx-auto px-4 py-16 md:py-24 text-center flex flex-col items-center" data-purpose="hero-section">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-black">Patrimonio360°</h1>
+    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">Descubre los tesoros culturales de Colombia a través de un viaje interactivo.</p>
+    <a class="bg-black text-white px-8 py-3 rounded-md font-medium text-lg hover:bg-gray-800 transition mb-16 inline-block" href="#">Ver mapa</a>
+    <div class="w-full max-w-5xl rounded-2xl overflow-hidden shadow-xl" data-purpose="hero-image-container">
+        <img alt="Cartagena sunset" class="w-full h-auto object-cover aspect-video md:aspect-[2/1]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Cabo_San_Juan%2C_Colombia.jpg/1280px-Cabo_San_Juan%2C_Colombia.jpg">
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-20" data-purpose="features" id="podras_ver">
+    <h2 class="text-3xl font-bold text-center mb-16">Podras ver...</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center max-w-5xl mx-auto">
+        <div class="flex flex-col items-center" data-purpose="feature-item">
+            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img alt="Map" class="w-8 h-8 rounded-full" src="https://www.shutterstock.com/image-illustration/colombia-geographic-physical-exaggerated-topograph-600nw-2688590555.jpg">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Mapa Interactivo</h3>
+            <p>Explora ubicaciones patrimoniales en toda Colombia de forma interactiva.</p>
+        </div>
+        <div class="flex flex-col items-center" data-purpose="feature-item">
+            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img alt="3D" class="w-8 h-8 rounded-full" src="https://p.turbosquid.com/ts-thumb/Ij/VNxZdo/lqLBbFhM/castle1/jpg/1493071248/600x600/fit_q87/8e354be9199e96f6e2480ea6da08c8c5e78cc4ae/castle1.jpg">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Modelos 3D y Visualizaciones</h3>
+            <p>Experimenta monumentos y artefactos históricos en detalle tridimensional.</p>
+        </div>
+        <div class="flex flex-col items-center" data-purpose="feature-item">
+            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img alt="Scroll" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv1zgy4SjAVv20cPBB3DCBXpr7_IPzYUf3RoFicvvD8TMfexGqj_KkPMTY_DKHC1EqB8NGG8Ymbglj5wTAloh5aMdTr5tlvVvdMZ4ZPLfrCt6kjOwMC1w_v7WEcqUgSwKrkv0HnxTjMebujlOnywEc0JdarGQ-QcegAQK1xMgDByAm_3wAnutWfGS8qb_yLlfsLxZnU4j26DHoTEy6N-ID6yPypk4xUBmC2ZXAWdtRsQ-WbJ809vS4Ap7WuhQFAhvuj69XxD0Zjm4">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Información Histórica</h3>
+            <p class="">Sumérgete en la rica historia de Colombia con información detallada.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-20 border-t border-gray-100" data-purpose="explore-section">
+    <div class="flex flex-col md:flex-row gap-12 items-center max-w-6xl mx-auto">
+        <div class="md:w-1/2 pr-0 md:pr-8" data-purpose="explore-content">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Explora Nuestras Joyas</h2>
+            <p class="text-lg mb-8 text-gray-600">Sumérgete en el diverso patrimonio cultural de Colombia. Desde antiguas maravillas arqueológicas hasta vibrantes ciudades coloniales, hay algo para que todos descubran y aprendan.</p>
+            <div class="flex flex-wrap gap-4">
+                <a class="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition" href="#">Planifica tu Visita</a>
+                <a class="bg-gray-100 text-black px-6 py-3 rounded-md font-medium hover:bg-gray-200 transition" href="#">Ver Galería</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 w-full" data-purpose="explore-image">
+            <img alt="San Agustin statues" class="w-full h-auto rounded-2xl object-cover shadow-lg aspect-[4/3]" src="https://www.semana.com/resizer/v2/G2Z5IHK2VJGGFLT5HX5ELM2LHA.jpg?smart=true&auth=7d246a5ea7a0cc693c5a359fdfb32ab2baca56a26352f7250f77486abb7c7681&width=1280&height=720">
+        </div>
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-20 border-t border-gray-100" data-purpose="highlights">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12">Experiencias Destacadas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col group cursor-pointer" data-purpose="highlight-card">
+                <div class="overflow-hidden rounded-2xl mb-6">
+                    <img alt="Hats" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105 aspect-[3/2]" src="https://bucketlistbri.com/wp-content/uploads/2017/08/DSC07220-1024x684.jpg">
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Tradiciones Locales</h3>
+                <p class="text-gray-600">Aprende sobre las costumbres, artesanías y música únicas de diferentes regiones colombianas.</p>
+            </div>
+            <div class="flex flex-col group cursor-pointer" data-purpose="highlight-card">
+                <div class="overflow-hidden rounded-2xl mb-6">
+                    <img alt="Festival" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105 aspect-[3/2]" src="https://radionacional-v3.s3.amazonaws.com/s3fs-public/styles/portadas_relaciona_4_3/public/node/article/field_image/WhatsApp%20Image%202022-03-03%20at%207.53.23%20AM%20%281%29.jpeg?h=1c9b88c9&itok=ApEx7q9N">
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Eventos culturales</h3>
+                <p class="text-gray-600">Descubre las vibrantes fiestas y celebraciones que muestran la diversidad cultural de Colombia.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-20 bg-gray-50 rounded-3xl mb-12 max-w-7xl" data-purpose="testimonials">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12">Lo que dicen nuestros usuarios</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between" data-purpose="testimonial-card">
+                <p class="text-gray-700 italic mb-8">"Patrimonio360° ha transformado mi forma de aprender sobre historia. Los modelos 3D son increíbles."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Avatar" class="w-12 h-12 rounded-full" src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg">
+                    <div>
+                        <p class="font-bold text-sm">Anónimo</p>
+                        <p class="text-xs text-gray-500">Estudiante de Historia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between" data-purpose="testimonial-card">
+                <p class="text-gray-700 italic mb-8">"Pude planificar mi viaje a Colombia usando esta plataforma. Fue de mucha ayuda para descubrir nuevos lugares."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Avatar" class="w-12 h-12 rounded-full" src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg">
+                    <div>
+                        <p class="font-bold text-sm">Anónimo</p>
+                        <p class="text-xs text-gray-500">Turista</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between" data-purpose="testimonial-card">
+                <p class="text-gray-700 italic mb-8">"Excelente recurso para educadores. Mis alumnos disfrutan explorando el patrimonio interactivo."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Avatar" class="w-12 h-12 rounded-full" src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg">
+                    <div>
+                        <p class="font-bold text-sm">Anónimo</p>
+                        <p class="text-xs text-gray-500">Profesora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-gray-50 pt-16 pb-8 border-t border-gray-200" data-purpose="site-footer">
+<div class="container mx-auto px-4 max-w-6xl mb-16" data-purpose="cta-area">
+    <div class="flex flex-col md:flex-row justify-between items-center bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
+        <h2 class="text-3xl font-bold mb-6 md:mb-0">Comienza tu Aventura Hoy</h2>
+        <div class="flex flex-wrap gap-4">
+            <a class="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition" href="register.html">Crear Cuenta</a>
+            <a class="bg-transparent border border-gray-300 text-black px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition" href="#">Más información</a>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between gap-12" data-purpose="footer-links">
+    <div class="md:w-1/3">
+        <div class="font-bold text-xl tracking-tight mb-4">Patrimonio360°</div>
+        <div class="flex gap-4 mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">fb</div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">tw</div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">ig</div>
+        </div>
+        <p class="text-sm text-gray-500">© 2026 Patrimonio360°. Todos los derechos reservados.</p>
+    </div>
+</div>
+</footer>
+<script src="animations_index.js"></script>
+</body>
+</html>

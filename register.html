@@ -6,101 +6,100 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#ec5b13",
-                        "background-light": "#f8f6f6",
-                        "background-dark": "#221610",
-                    },
-                    fontFamily: {
-                        "display": ["Public Sans"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#ec5b13",
+                    "background-light": "#f8f6f6",
+                    "background-dark": "#221610",
                 },
+                fontFamily: {
+                    "display": ["Public Sans"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
             },
-        }
-    </script>
-<title>Patrimonio360° - Join the Journey</title>
+        },
+    }
+</script>
+<title>Patrimonio360° - Registrarse</title>
+<link rel="icon" href="images/logo.jpg" type="image/png">
 </head>
+
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<div class="flex flex-1 justify-center items-center py-10 px-4 md:px-10">
-<div class="layout-content-container flex flex-col max-w-[1200px] w-full bg-white dark:bg-slate-900 shadow-2xl rounded-xl overflow-hidden md:flex-row min-h-[700px]">
-<div class="relative hidden md:flex md:w-1/2 bg-primary overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center" data-alt="Panoramic view of colonial Cartagena streets Colombia" style="background-image: linear-gradient(rgba(236, 91, 19, 0.4), rgba(34, 22, 16, 0.8)), url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAJ4TSLQ9TZQo85yq7XRXFe-GRflJ05ufBhEXBXBh-_GR86g57KKHJ2amqDYQxrLMP3KzVPSFcPkYqc2fN35EWq6J2_vYtbP2M-IN3mALkYlqsGU0IIJy4sfYoEzp8iZeuctAkNG7adhVhJCW1DodHkYcHJRndY_Z83jjAe08cr-eqopOdFOJ8llDupObKMcc3tEUHpwjS8RjbIdGwDluzNCcVofjhfneohUpM6TUf0MUip1wjL-_J6z_zC2DaAG83iPBUoQO4g59A&quot;);"></div>
-<div class="relative z-10 flex flex-col justify-end p-12 h-full w-full">
-<h1 class="text-4xl font-bold text-white mb-4">Patrimonio360°</h1>
-<p class="text-lg text-white/90 leading-relaxed">Únete a nuestra comunidad y ayúdanos a preservar el vibrante tapiz del patrimonio cultural e histórico de Colombia para las futuras generaciones.</p>
-<div class="mt-8 flex gap-2">
-<div class="w-12 h-1 bg-white rounded-full"></div>
-<div class="w-2 h-1 bg-white/40 rounded-full"></div>
-<div class="w-2 h-1 bg-white/40 rounded-full"></div>
+    <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center items-center py-10 px-4 md:px-10">
+            <div class="layout-content-container flex flex-col max-w-[1200px] w-full bg-white dark:bg-slate-900 shadow-2xl rounded-xl overflow-hidden md:flex-row min-h-[700px]">
+                <div class="relative hidden md:flex md:w-1/2 bg-black overflow-hidden">
+                    <div class="absolute inset-0 bg-cover bg-center" data-alt="Calles coloniales de Cartagena" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url('images/cartagena_street.jpg');">
+                    </div>
+                    <div class="relative z-10 flex flex-col justify-end p-12 h-full w-full">
+                        <h1 class="text-4xl font-bold text-white mb-4">Patrimonio360°</h1>
+                        <p class="text-lg text-white/90 leading-relaxed">Únete a nuestra comunidad y ayúdanos a preservar el vibrante tapiz del patrimonio cultural e histórico de Colombia para las futuras generaciones.</p>
+                        <div class="mt-8 flex gap-2">
+                            <div class="w-12 h-1 bg-white rounded-full"></div>
+                            <div class="w-2 h-1 bg-white/40 rounded-full"></div>
+                            <div class="w-2 h-1 bg-white/40 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col w-full md:w-1/2 p-8 lg:p-12 justify-center">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold tracking-tight mb-2">Crear Cuenta</h2>
+                        <p class="text-slate-500 dark:text-slate-400">Comienza tu exploración de los tesoros de Colombia hoy mismo.</p>
+                    </div>
+                    <form class="flex flex-col gap-5 w-full max-w-md">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Nombre Completo</label>
+                            <div class="relative">
+                                <img src="images/user_icon.png" alt="Icono usuario" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60">
+                                <input type="text" placeholder="Juan Pérez" class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Correo Electrónico</label>
+                            <div class="relative">
+                                <img src="images/email_icon.png" alt="Icono email" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60">
+                                <input type="email" placeholder="ejemplo@correo.com" class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Contraseña</label>
+                                <div class="relative">
+                                    <img src="images/password_icon.png" alt="Icono contraseña" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60">
+                                    <input type="password" placeholder="••••••••" class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all">
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Confirmar Contraseña</label>
+                                <div class="relative">
+                                    <img src="images/verify_password_icon.png" alt="Icono confirmar contraseña" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60">
+                                    <input type="password" placeholder="••••••••" class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 py-2">
+                            <input id="terms" type="checkbox" class="mt-1 rounded border-slate-300 dark:border-slate-600 text-black focus:ring-black h-4 w-4">
+                            <label for="terms" class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+                                Acepto los
+                                <a href="#" class="text-black font-semibold hover:underline">Términos de Servicio</a>
+                                y la
+                                <a href="#" class="text-black font-semibold hover:underline">Política de Privacidad</a>.
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-black hover:bg-gray-900 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/25 transition-all flex justify-center items-center gap-2">Crear Cuenta</button>
+                    </form>
+                    <div class="relative my-8"></div>
+                    <div class="mt-10 text-center">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">¿Ya tienes una cuenta? <a class="text-black font-semibold hover:underline ml-1" href="login.html">Inicia sesión aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<div class="flex flex-col w-full md:w-1/2 p-8 lg:p-12 justify-center">
-<div class="mb-8">
-<h2 class="text-3xl font-bold tracking-tight mb-2">Crear Cuenta</h2>
-<p class="text-slate-500 dark:text-slate-400">Comienza tu exploración de los tesoros de Colombia hoy mismo.</p>
-</div>
-<form class="flex flex-col gap-5">
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Nombre Completo</label>
-<div class="relative">
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Juan Pérez" type="text">
-</div>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Correo Electrónico</label>
-<div class="relative">
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="ejemplo@correo.com" type="email">
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Contraseña</label>
-<div class="relative">
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="••••••••" type="password">
-</div>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Contraseña</label>
-<div class="relative">
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="••••••••" type="password">
-</div>
-</div>
-</div>
-<div class="flex items-start gap-3 py-2">
-<input class="mt-1 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary h-4 w-4" id="terms" type="checkbox">
-<label class="text-xs text-slate-500 dark:text-slate-400 leading-normal" for="terms">Acepto los <a class="text-primary hover:underline" href="#">Términos de Servicio</a> y la <a class="text-primary hover:underline" href="#">Política de Privacidad</a>.</label>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-primary/25 transition-all flex justify-center items-center gap-2" type="submit">Crear Cuenta</button>
-</form>
-<div class="relative my-8">
-<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200 dark:border-slate-700"></div></div>
-<div class="relative flex justify-center text-xs uppercase"><span class="bg-white dark:bg-slate-900 px-2 text-slate-500">O REGÍSTRATE CON</span></div>
-</div>
-<div class="flex gap-4">
-<button class="flex-1 flex justify-center items-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<span class="text-sm font-medium"><br></span>
-</button>
-<button class="flex-1 flex justify-center items-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<span class="text-sm font-medium"><br></span>
-</button>
-</div>
-<div class="mt-10 text-center">
-<p class="text-sm text-slate-500 dark:text-slate-400">¿Ya tienes una cuenta? <a class="text-primary font-semibold hover:underline ml-1" href="login.html">Inicia sesión aquí</a></p>
-</div>
-</div>
-</div>
-</div>
-<footer class="py-6 text-center text-xs text-slate-400">
-                © 2026 Patrimonio360°. All rights reserved. Exploring Colombian Heritage.
-            </footer>
-</div>
-</div>
-</body></html>
+</body>
+</html>

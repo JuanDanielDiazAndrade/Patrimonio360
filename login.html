@@ -210,59 +210,18 @@
     /* ── Validación al enviar el formulario ──
        Si algún campo falla, se cancela el envío y el foco
        se mueve al primer campo inválido para guiar al usuario */
-form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    form.addEventListener('submit', function (e) {
+        const isEmailValid = validateEmail();
+        const isPassValid  = validatePassword();
 
-    const isEmailValid = validateEmail();
-    const isPassValid  = validatePassword();
-
-    if (!isEmailValid || !isPassValid) {
-        if (!isEmailValid) emailInput.focus();
-        else               passwordInput.focus();
-        return;
-    }
-
-    const submitBtn = document.getElementById('submitBtn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Iniciando sesión...';
-
-    try {
-        const response = await fetch('http://localhost:3000/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email:    emailInput.value.trim(),
-                password: passwordInput.value,
-            }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            if (data.errors) {
-                data.errors.forEach(err => {
-                    if (err.field === 'email')    showError(emailInput,    emailError,    err.message);
-                    if (err.field === 'password') showError(passwordInput, passwordError, err.message);
-                });
-            } else {
-                showError(passwordInput, passwordError, data.message || 'Correo o contraseña incorrectos.');
-            }
-            return;
+        if (!isEmailValid || !isPassValid) {
+            e.preventDefault(); // evita que el formulario se envíe al servidor
+            if (!isEmailValid) emailInput.focus();
+            else               passwordInput.focus();
+            return false;
         }
-
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        window.location.href = 'index.html';
-
-    } catch (error) {
-        console.error('Error de conexión:', error);
-        alert('No se pudo conectar con el servidor. Verifica tu conexión.');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    }
-});
+        return true;
+    });
 
     /* ── Toggle de visibilidad de contraseña ──
        Alterna entre type="password" (oculto) y type="text" (visible)

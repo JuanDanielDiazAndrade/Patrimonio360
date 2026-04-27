@@ -312,25 +312,68 @@
     /* ── Validación al enviar el formulario ──
        Se evalúan todos los campos; si alguno falla, se cancela el envío
        y el foco se mueve al primer campo inválido para guiar al usuario */
-    form.addEventListener('submit', function(e) {
-        const isNameValid    = validateName();
-        const isEmailValid   = validateEmail();
-        const isPassValid    = validatePassword();
-        const isConfirmValid = validateConfirm();
-        const isTermsValid   = validateTerms();
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-        if (!isNameValid || !isEmailValid || !isPassValid || !isConfirmValid || !isTermsValid) {
-            e.preventDefault(); // evita que el formulario se envíe al servidor
-            /* Foco en el primer campo con error, en orden de aparición en el formulario */
-            if (!isNameValid)    nameInput.focus();
-            else if (!isEmailValid)   emailInput.focus();
-            else if (!isPassValid)    passwordInput.focus();
-            else if (!isConfirmValid) confirmInput.focus();
-            else                      termsInput.focus();
-            return false;
+    const isNameValid    = validateName();
+    const isEmailValid   = validateEmail();
+    const isPassValid    = validatePassword();
+    const isConfirmValid = validateConfirm();
+    const isTermsValid   = validateTerms();
+
+    if (!isNameValid || !isEmailValid || !isPassValid || !isConfirmValid || !isTermsValid) {
+        if (!isNameValid)         nameInput.focus();
+        else if (!isEmailValid)   emailInput.focus();
+        else if (!isPassValid)    passwordInput.focus();
+        else if (!isConfirmValid) confirmInput.focus();
+        else                      termsInput.focus();
+        return;
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creando cuenta...';
+
+    try {
+        const response = await fetch('http://localhost:3000/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name:            nameInput.value.trim(),
+                email:           emailInput.value.trim(),
+                password:        passwordInput.value,
+                confirmPassword: confirmInput.value,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            if (data.errors) {
+                data.errors.forEach(err => {
+                    if (err.field === 'email')    showError(emailInput,    emailError,    err.message);
+                    if (err.field === 'name')     showError(nameInput,     nameError,     err.message);
+                    if (err.field === 'password') showError(passwordInput, passwordError, err.message);
+                });
+            } else {
+                alert(data.message || 'Ocurrió un error. Inténtalo de nuevo.');
+            }
+            return;
         }
-        return true;
-    });
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = 'index.html';
+
+    } catch (error) {
+        console.error('Error de conexión:', error);
+        alert('No se pudo conectar con el servidor. Verifica tu conexión.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    }
+});
 
     /* ── Toggle de visibilidad de contraseña ──
        Alterna entre type="password" (oculto) y type="text" (visible)

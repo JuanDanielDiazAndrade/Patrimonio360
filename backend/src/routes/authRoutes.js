@@ -5,43 +5,28 @@ const { protect } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
+// Validaciones del registro (segunda capa de seguridad después del frontend)
 const registerValidation = [
-    body('name')
-        .trim()
-        .notEmpty().withMessage('El nombre es obligatorio.')
-        .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres.'),
-    body('email')
-        .trim()
-        .notEmpty().withMessage('El correo es obligatorio.')
-        .isEmail().withMessage('Ingresa un correo electrónico válido.')
-        .normalizeEmail(),
-    body('password')
-        .notEmpty().withMessage('La contraseña es obligatoria.')
-        .isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres.')
-        .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/)
-        .withMessage('La contraseña debe incluir al menos 1 mayúscula, 1 número y 1 carácter especial.'),
-    body('confirmPassword')
-        .notEmpty().withMessage('Debes confirmar la contraseña.')
-        .custom((value, { req }) => {
-            if (value !== req.body.password) {
-                throw new Error('Las contraseñas no coinciden.');
-            }
-            return true;
-        }),
+    body('name').trim().notEmpty().withMessage('El nombre es obligatorio.'),
+    body('email').trim().isEmail().withMessage('Correo inválido.').normalizeEmail(),
+    body('password').isLength({ min: 8 }).withMessage('Mínimo 8 caracteres.'),
+    body('confirmPassword').custom((value, { req }) => {
+        if (value !== req.body.password) throw new Error('Las contraseñas no coinciden.');
+        return true;
+    }),
 ];
 
+// Validaciones básicas del login
 const loginValidation = [
-    body('email')
-        .trim()
-        .notEmpty().withMessage('El correo es obligatorio.')
-        .isEmail().withMessage('Ingresa un correo electrónico válido.')
-        .normalizeEmail(),
-    body('password')
-        .notEmpty().withMessage('La contraseña es obligatoria.'),
+    body('email').trim().isEmail().withMessage('Correo inválido.').normalizeEmail(),
+    body('password').notEmpty().withMessage('La contraseña es obligatoria.'),
 ];
 
+// Rutas públicas
 router.post('/register', registerValidation, register);
 router.post('/login',    loginValidation,    login);
-router.get('/me',        protect,            getMe);
+
+// Ruta protegida — requiere token válido
+router.get('/me', protect, getMe);
 
 module.exports = router;

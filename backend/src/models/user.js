@@ -3,52 +3,47 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
     {
+        // Nombre del usuario
         name: {
             type: String,
             required: [true, 'El nombre es obligatorio'],
             trim: true,
-            minlength: [2, 'El nombre debe tener al menos 2 caracteres'],
-            maxlength: [100, 'El nombre no puede superar 100 caracteres'],
         },
+        // Correo único, siempre en minúsculas
         email: {
             type: String,
             required: [true, 'El correo es obligatorio'],
             unique: true,
             lowercase: true,
             trim: true,
-            match: [
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                'Ingresa un correo electrónico válido',
-            ],
         },
+        // Contraseña hasheada, nunca se devuelve en consultas
         password: {
             type: String,
             required: [true, 'La contraseña es obligatoria'],
-            minlength: [8, 'La contraseña debe tener al menos 8 caracteres'],
+            minlength: [8, 'Mínimo 8 caracteres'],
             select: false,
         },
+        // Rol del usuario: 'user' normal o 'admin'
         role: {
             type: String,
             enum: ['user', 'admin'],
             default: 'user',
         },
-        active: {
-            type: Boolean,
-            default: true,
-            select: false,
-        },
     },
     {
-        timestamps: true,
+        timestamps: true, // agrega createdAt y updatedAt automáticamente
     }
 );
 
+// Antes de guardar, hashea la contraseña automáticamente
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
     this.password = await bcrypt.hash(this.password, 12);
     next();
 });
 
+// Método para comparar contraseña en el login
 userSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };

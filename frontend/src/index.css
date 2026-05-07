@@ -1,0 +1,32 @@
+/* 
+  Estilos globales de la aplicación.
+  Importa las capas base, componentes y utilidades de Tailwind CSS.
+  También define las clases de animación de scroll (.oculto y .animado)
+  que usa el hook useAnimations en la página Home.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #111827;
+    }
+
+    p {
+        color: #4b5563;
+    }
+}
+
+/* Clases de animación de scroll (useAnimations hook) */
+.oculto {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.animado {
+    opacity: 1;
+    transform: translateY(0);
+}

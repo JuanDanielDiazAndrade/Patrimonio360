@@ -21,6 +21,7 @@ app.use(cors({
 
 // Permite que el servidor lea datos JSON que envía el frontend
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Rutas de autenticación: /api/auth/register, /api/auth/login
 app.use('/api/auth', authRoutes);

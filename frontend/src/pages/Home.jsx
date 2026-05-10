@@ -29,10 +29,7 @@ export default function Home() {
           </p>
 
           {/* Botón principal de llamada a la acción */}
-          <a
-            className="bg-black text-white px-8 py-3 rounded-md font-medium text-lg hover:bg-gray-800 transition mb-16 inline-block"
-            href="#"
-          >
+          <a href="/login" className="bg-black text-white px-8 py-3 rounded-md font-medium text-lg hover:bg-gray-800 transition mb-16 inline-block">
             Ver mapa
           </a>
 

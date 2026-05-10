@@ -108,8 +108,8 @@ export default function Login() {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))
 
-            // Redirige a la página principal
-            navigate('/')
+            // Redirige a la interfaz del mapa interactivo
+            navigate('/mapa')
         } catch (err) {
             // Error de red: el backend no está corriendo o hay problemas de conexión
             console.error('Error de conexión:', err)

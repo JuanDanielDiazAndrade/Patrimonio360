@@ -24,7 +24,7 @@ const loginValidation = [
 
 // Rutas públicas
 router.post('/register', registerValidation, register);
-router.post('/login',    loginValidation,    login);
+router.post('/login', loginValidation, login);
 
 // Ruta protegida — requiere token válido
 router.get('/me', protect, getMe);

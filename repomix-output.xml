@@ -1,0 +1,1915 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+backend/package.json
+backend/src/app.js
+backend/src/config/db.js
+backend/src/controllers/authController.js
+backend/src/controllers/locationController.js
+backend/src/middleware/authMiddleware.js
+backend/src/models/Location.js
+backend/src/models/user.js
+backend/src/routes/authRoutes.js
+backend/src/routes/locationRoutes.js
+frontend/index.html
+frontend/package.json
+frontend/postcss.config.js
+frontend/public/images/3d_icon.png
+frontend/public/images/avatar.jpg
+frontend/public/images/barranquilla_carnival.jpg
+frontend/public/images/cartagena_street.jpg
+frontend/public/images/closed_eye_icon.png
+frontend/public/images/colombia_map_icon.png
+frontend/public/images/colpatria_tower.jpg
+frontend/public/images/confirm_password_icon.png
+frontend/public/images/cristo_rey.jpg
+frontend/public/images/email_icon.png
+frontend/public/images/large_logo.png
+frontend/public/images/logo.jpg
+frontend/public/images/open_eye_icon.png
+frontend/public/images/password_icon.png
+frontend/public/images/scroll_icon.png
+frontend/public/images/tayrona.jpg
+frontend/public/images/user_icon.png
+frontend/public/images/wayuu_bags.jpg
+frontend/src/App.jsx
+frontend/src/components/Footer.jsx
+frontend/src/components/Header.jsx
+frontend/src/hooks/useAnimations.js
+frontend/src/index.css
+frontend/src/main.jsx
+frontend/src/pages/Home.jsx
+frontend/src/pages/Login.jsx
+frontend/src/pages/Register.jsx
+frontend/tailwind.config.js
+frontend/vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Dependencias
+node_modules/
+
+# Variables de entorno (¡nunca subir al repo!)
+.env
+.env.local
+.env.production
+
+# Build de Vite
+frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="frontend/package.json">
+{
+    "name": "patrimonio360-frontend",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.23.0"
+    },
+    "devDependencies": {
+        "@tailwindcss/container-queries": "^0.1.1",
+        "@tailwindcss/forms": "^0.5.7",
+        "@vitejs/plugin-react": "^4.3.0",
+        "autoprefixer": "^10.4.19",
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.4",
+        "vite": "^5.3.0"
+    }
+}
+</file>
+
+<file path="frontend/postcss.config.js">
+// Configuración de PostCSS.
+// Procesa el CSS de Tailwind y agrega prefijos de compatibilidad entre navegadores gracias a autoprefixer.
+export default {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    },
+}
+</file>
+
+<file path="frontend/src/App.jsx">
+// Componente raíz de la aplicación.
+// Define las rutas principales usando React Router:
+// - "/"          → página de inicio (Home)
+// - "/login"     → formulario de inicio de sesión
+// - "/register"  → formulario de registro
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import Login from './pages/Login.jsx'
+import Register from './pages/Register.jsx'
+
+export default function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+        </Routes>
+    )
+}
+</file>
+
+<file path="frontend/src/components/Footer.jsx">
+import { Link } from 'react-router-dom'
+
+export default function Footer() {
+  return (
+    <footer className="bg-gray-50 pt-16 pb-8 border-t border-gray-200">
+      <div className="container mx-auto px-4 max-w-6xl mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-center bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold mb-6 md:mb-0">Comienza tu Aventura Hoy</h2>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition"
+              to="/register"
+            >
+              Crear Cuenta
+            </Link>
+            <a
+              className="bg-transparent border border-gray-300 text-black px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition"
+              href="#"
+            >
+              Más información
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between gap-12">
+        <div className="md:w-1/3">
+          <div className="font-bold text-xl tracking-tight mb-4">Patrimonio360°</div>
+          <div className="flex gap-4 mb-4">
+            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">fb</div>
+            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">tw</div>
+            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">ig</div>
+          </div>
+          <p className="text-sm text-gray-500">© 2026 Patrimonio360°. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer >
+  )
+}
+</file>
+
+<file path="frontend/src/components/Header.jsx">
+import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+
+export default function Header() {
+    const headerRef = useRef(null)
+
+    // Animación de entrada del header (replicada de animations_index.js)
+    useEffect(() => {
+        const el = headerRef.current
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(-20px)'
+        el.style.transition = 'all 0.6s ease'
+        const timer = setTimeout(() => {
+            el.style.opacity = '1'
+            el.style.transform = 'translateY(0)'
+        }, 200)
+        return () => clearTimeout(timer)
+    }, [])
+
+    return (
+        <div className="fixed top-0 left-0 right-0 z-[1000] bg-white/50">
+            <header
+                ref={headerRef}
+                className="container mx-auto px-4 py-6 flex items-center justify-between"
+            >
+                <div className="flex items-center">
+                    <img className="h-10 w-auto" src="/images/large_logo.png" alt="Patrimonio360°" />
+                </div>
+                <nav className="hidden md:flex space-x-8 items-center">
+                    <a className="text-gray-900 font-medium hover:text-gray-600" href="#podras_ver">
+                        Explorar
+                    </a>
+                    <a className="text-gray-900 font-medium hover:text-gray-600" href="#">
+                        Acerca de
+                    </a>
+                    <Link
+                        className="bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition"
+                        to="/login"
+                    >
+                        Iniciar sesión
+                    </Link>
+                </nav>
+            </header>
+        </div>
+    )
+}
+</file>
+
+<file path="frontend/src/hooks/useAnimations.js">
+import { useEffect } from 'react'
+
+export default function useAnimations() {
+    useEffect(() => {
+        // Animación de aparición al hacer scroll
+        const elementos = document.querySelectorAll(
+            'section, .highlight-card, .feature-item, .testimonial-card'
+        )
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animado')
+                    }
+                })
+            },
+            { threshold: 0.15 }
+        )
+        elementos.forEach((el) => {
+            el.classList.add('oculto')
+            observer.observe(el)
+        })
+
+        // Animación botones
+        const handleEnterBtn = (e) => {
+            e.currentTarget.style.transform = 'scale(1.05)'
+            e.currentTarget.style.transition = 'transform 0.2s ease'
+        }
+        const handleLeaveBtn = (e) => {
+            e.currentTarget.style.transform = 'scale(1)'
+        }
+        const botones = document.querySelectorAll('a')
+        botones.forEach((btn) => {
+            btn.addEventListener('mouseenter', handleEnterBtn)
+            btn.addEventListener('mouseleave', handleLeaveBtn)
+        })
+
+        // Animación imágenes
+        const handleEnterImg = (e) => {
+            e.currentTarget.style.transform = 'scale(1.03)'
+            e.currentTarget.style.transition = 'transform 0.4s ease'
+        }
+        const handleLeaveImg = (e) => {
+            e.currentTarget.style.transform = 'scale(1)'
+        }
+        const imagenes = document.querySelectorAll('img')
+        imagenes.forEach((img) => {
+            img.addEventListener('mouseenter', handleEnterImg)
+            img.addEventListener('mouseleave', handleLeaveImg)
+        })
+
+        return () => {
+            observer.disconnect()
+            botones.forEach((btn) => {
+                btn.removeEventListener('mouseenter', handleEnterBtn)
+                btn.removeEventListener('mouseleave', handleLeaveBtn)
+            })
+            imagenes.forEach((img) => {
+                img.removeEventListener('mouseenter', handleEnterImg)
+                img.removeEventListener('mouseleave', handleLeaveImg)
+            })
+        }
+    }, [])
+}
+</file>
+
+<file path="frontend/src/index.css">
+/* 
+  Estilos globales de la aplicación.
+  Importa las capas base, componentes y utilidades de Tailwind CSS.
+  También define las clases de animación de scroll (.oculto y .animado)
+  que usa el hook useAnimations en la página Home.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #111827;
+    }
+
+    p {
+        color: #4b5563;
+    }
+}
+
+/* Clases de animación de scroll (useAnimations hook) */
+.oculto {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.animado {
+    opacity: 1;
+    transform: translateY(0);
+}
+</file>
+
+<file path="frontend/src/main.jsx">
+// Punto de entrada de React.
+// Monta la aplicación en el div#root del index.html.
+// Envuelve todo en BrowserRouter para habilitar la navegación entre rutas sin recargar la página (React Router).
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
+)
+</file>
+
+<file path="frontend/src/pages/Home.jsx">
+import { useEffect } from 'react'
+import Header from '../components/Header.jsx'
+import Footer from '../components/Footer.jsx'
+import useAnimations from '../hooks/useAnimations.js'
+
+export default function Home() {
+  // Activa las animaciones de scroll y hover definidas en el hook
+  useAnimations()
+
+  // Cambia el título de la pestaña del navegador al montar el componente
+  useEffect(() => {
+    document.title = 'Patrimonio360°'
+  }, [])
+
+  return (
+    <div className="bg-white">
+      {/* Encabezado fijo con logo y navegación */}
+      <Header />
+
+      <main>
+        {/* ── SECCIÓN HERO ──────────────────────────────────────────
+            Título principal, descripción, botón CTA e imagen destacada */}
+        <section className="container mx-auto px-4 py-16 md:py-24 text-center flex flex-col items-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-black">
+            Patrimonio360°
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+            Descubre los tesoros culturales de Colombia a través de un viaje interactivo.
+          </p>
+
+          {/* Botón principal de llamada a la acción */}
+          <a
+            className="bg-black text-white px-8 py-3 rounded-md font-medium text-lg hover:bg-gray-800 transition mb-16 inline-block"
+            href="#"
+          >
+            Ver mapa
+          </a>
+
+          {/* Imagen hero del Parque Tayrona */}
+          <div className="w-full max-w-5xl rounded-2xl overflow-hidden shadow-xl">
+            <img
+              src="/images/tayrona.jpg"
+              alt="Parque Tayrona"
+              className="w-full h-auto object-cover aspect-video md:aspect-[2/1]"
+            />
+          </div>
+        </section>
+
+        {/* ── SECCIÓN CARACTERÍSTICAS ───────────────────────────────
+            Tres tarjetas que describen las funciones principales:
+            mapa interactivo, modelos 3D e información histórica.
+            El id="podras_ver" es el ancla del link "Explorar" del Header */}
+        <section className="container mx-auto px-4 py-20" id="podras_ver">
+          <h2 className="text-3xl font-bold text-center mb-16">Podras ver...</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center max-w-5xl mx-auto">
+
+            {/* Tarjeta: Mapa Interactivo */}
+            <div className="flex flex-col items-center feature-item">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img src="/images/colombia_map_icon.png" alt="Mapa de Colombia" className="w-9 h-9" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Mapa Interactivo</h3>
+              <p>Explora ubicaciones patrimoniales en toda Colombia de forma interactiva.</p>
+            </div>
+
+            {/* Tarjeta: Modelos 3D */}
+            <div className="flex flex-col items-center feature-item">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img src="/images/3d_icon.png" alt="3D" className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Modelos 3D y Visualizaciones</h3>
+              <p>Experimenta monumentos y artefactos históricos en detalle tridimensional.</p>
+            </div>
+
+            {/* Tarjeta: Información Histórica */}
+            <div className="flex flex-col items-center feature-item">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <img src="/images/scroll_icon.png" alt="Pergamino" className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Información Histórica</h3>
+              <p>Sumérgete en la rica historia de Colombia con información detallada.</p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── SECCIÓN EXPLORA ───────────────────────────────────────
+            Bloque de texto + imagen en dos columnas.
+            Invita al usuario a planificar su visita o ver la galería */}
+        <section className="container mx-auto px-4 py-20 border-t border-gray-100">
+          <div className="flex flex-col md:flex-row gap-12 items-center max-w-6xl mx-auto">
+
+            {/* Columna izquierda: texto y botones */}
+            <div className="md:w-1/2 pr-0 md:pr-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Explora Nuestras Joyas</h2>
+              <p className="text-lg mb-8 text-gray-600">
+                Sumérgete en el diverso patrimonio cultural de Colombia. Desde antiguas maravillas
+                arqueológicas hasta vibrantes ciudades coloniales, hay algo para que todos descubran
+                y aprendan.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition"
+                  href="#"
+                >
+                  Planifica tu Visita
+                </a>
+                <a
+                  className="bg-gray-100 text-black px-6 py-3 rounded-md font-medium hover:bg-gray-200 transition"
+                  href="#"
+                >
+                  Ver Galería
+                </a>
+              </div>
+            </div>
+
+            {/* Columna derecha: imagen del Cristo Rey */}
+            <div className="md:w-1/2 w-full">
+              <img
+                src="/images/cristo_rey.jpg"
+                alt="Estatua Cristo Rey"
+                className="w-full h-auto rounded-2xl object-cover shadow-lg aspect-[4/3]"
+              />
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── SECCIÓN HIGHLIGHTS ────────────────────────────────────
+            Dos tarjetas con imagen y descripción sobre experiencias
+            culturales destacadas: tradiciones locales y eventos */}
+        <section className="container mx-auto px-4 py-20 border-t border-gray-100">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12">Experiencias Destacadas</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              {/* Tarjeta: Tradiciones Locales — la clase highlight-card
+                  es detectada por useAnimations para la animación de scroll */}
+              <div className="flex flex-col group cursor-pointer highlight-card">
+                <div className="overflow-hidden rounded-2xl mb-6">
+                  {/* group-hover:scale-105 aplica zoom a la imagen al pasar el mouse */}
+                  <img
+                    src="/images/wayuu_bags.jpg"
+                    alt="Mochilas Wayuu"
+                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105 aspect-[3/2]"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Tradiciones Locales</h3>
+                <p className="text-gray-600">
+                  Aprende sobre las costumbres, artesanías y música únicas de diferentes regiones
+                  colombianas.
+                </p>
+              </div>
+
+              {/* Tarjeta: Eventos Culturales */}
+              <div className="flex flex-col group cursor-pointer highlight-card">
+                <div className="overflow-hidden rounded-2xl mb-6">
+                  <img
+                    src="/images/barranquilla_carnival.jpg"
+                    alt="Carnaval de Barranquilla"
+                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105 aspect-[3/2]"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Eventos culturales</h3>
+                <p className="text-gray-600">
+                  Descubre las vibrantes fiestas y celebraciones que muestran la diversidad cultural
+                  de Colombia.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN TESTIMONIOS ───────────────────────────────────
+            Array de testimonios renderizado con .map() para evitar
+            repetir el mismo bloque JSX tres veces */}
+        <section className="container mx-auto px-4 py-20 bg-gray-50 rounded-3xl mb-12 max-w-7xl">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12">Lo que dicen nuestros usuarios</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+              {/* Datos de cada testimonio: texto e rol del usuario */}
+              {[
+                {
+                  text: '"Patrimonio360° ha transformado mi forma de aprender sobre historia. Los modelos 3D son increíbles."',
+                  role: 'Estudiante de Historia',
+                },
+                {
+                  text: '"Pude planificar mi viaje a Colombia usando esta plataforma. Fue de mucha ayuda para descubrir nuevos lugares."',
+                  role: 'Turista',
+                },
+                {
+                  text: '"Excelente recurso para educadores. Mis alumnos disfrutan explorando el patrimonio interactivo."',
+                  role: 'Profesora',
+                },
+              ].map((t, i) => (
+                // key={i} identifica cada tarjeta de forma única en el DOM virtual
+                <div
+                  key={i}
+                  className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between testimonial-card"
+                >
+                  <p className="text-gray-700 italic mb-8">{t.text}</p>
+                  <div className="flex items-center gap-4">
+                    {/* Avatar genérico, todos los testimonios son anónimos */}
+                    <img src="/images/avatar.jpg" alt="Avatar" className="w-12 h-12 rounded-full" />
+                    <div>
+                      <p className="font-bold text-sm">Anónimo</p>
+                      <p className="text-xs text-gray-500">{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Pie de página con CTA, redes sociales y copyright */}
+      <Footer />
+    </div>
+  )
+}
+</file>
+
+<file path="frontend/src/pages/Login.jsx">
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+// Expresión regular para validar formato básico de correo: usuario@dominio.extensión
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+export default function Login() {
+    // useNavigate permite redirigir al usuario sin recargar la página
+    const navigate = useNavigate()
+
+    // ── Estado del formulario ──
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)   // controla visibilidad de la contraseña
+    const [errors, setErrors] = useState({ email: '', password: '' }) // mensajes de error por campo
+    const [loading, setLoading] = useState(false)             // deshabilita el botón mientras se hace la petición
+
+    // Cambia el título de la pestaña al montar el componente
+    useEffect(() => {
+        document.title = 'Patrimonio360° - Iniciar Sesión'
+    }, [])
+
+    // ── Funciones de validación ──────────────────────────────────
+    // Reciben el valor actual del campo (por defecto toman el estado)
+    // y retornan un string con el error, o vacío si es válido.
+    // Esto permite usarlas tanto en tiempo real como al enviar el form.
+
+    function validateEmail(value = email) {
+        if (!value.trim()) return 'El correo es obligatorio.'
+        if (!emailRegex.test(value.trim()))
+            return 'Ingrese un correo válido (ej: usuario@dominio.com).'
+        return ''
+    }
+
+    function validatePassword(value = password) {
+        // En login solo se verifica que no esté vacía;
+        // la validación real de credenciales ocurre en el servidor
+        if (!value) return 'La contraseña es obligatoria.'
+        return ''
+    }
+
+    // Genera la clase CSS del input según si tiene error o no.
+    // extraPadding ajusta el padding derecho cuando hay ícono de ojo
+    function inputClass(field, extraPadding = 'pr-4') {
+        return `w-full pl-12 ${extraPadding} py-3 rounded-xl border ${errors[field]
+            ? 'border-red-300 ring-1 ring-red-400'       // borde rojo si hay error
+            : 'border-slate-200 dark:border-slate-700'   // borde normal si no hay error
+            } bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all`
+    }
+
+    // ── Handlers de cambio en tiempo real ────────────────────────
+    // Actualizan el estado y revalidan el campo mientras el usuario escribe
+
+    function handleEmailChange(e) {
+        const v = e.target.value
+        setEmail(v)
+        setErrors((prev) => ({ ...prev, email: validateEmail(v) }))
+    }
+
+    function handlePasswordChange(e) {
+        const v = e.target.value
+        setPassword(v)
+        setErrors((prev) => ({ ...prev, password: validatePassword(v) }))
+    }
+
+    // ── Handler de envío del formulario ──────────────────────────
+    async function handleSubmit(e) {
+        e.preventDefault() // evita que el navegador recargue la página
+
+        // Valida todos los campos antes de enviar
+        const emailErr = validateEmail()
+        const passErr = validatePassword()
+        setErrors({ email: emailErr, password: passErr })
+
+        // Si hay algún error, detiene el envío
+        if (emailErr || passErr) return
+
+        setLoading(true)
+        try {
+            // Petición POST al backend con las credenciales
+            const response = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email.trim(), password }),
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                // El servidor puede devolver errores por campo específico o un mensaje general
+                if (data.errors) {
+                    const newErrors = { email: '', password: '' }
+                    data.errors.forEach((err) => {
+                        if (err.field in newErrors) newErrors[err.field] = err.message
+                    })
+                    setErrors(newErrors)
+                } else {
+                    // Error genérico (ej: credenciales incorrectas)
+                    setErrors((prev) => ({
+                        ...prev,
+                        password: data.message || 'Correo o contraseña incorrectos.',
+                    }))
+                }
+                return
+            }
+
+            // Login exitoso: guarda el token y datos del usuario en localStorage
+            // para mantener la sesión activa entre recargas de página
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', JSON.stringify(data.user))
+
+            // Redirige a la página principal
+            navigate('/')
+        } catch (err) {
+            // Error de red: el backend no está corriendo o hay problemas de conexión
+            console.error('Error de conexión:', err)
+            alert('No se pudo conectar con el servidor. Verifica tu conexión.')
+        } finally {
+            // Se ejecuta siempre, haya error o no, para rehabilitar el botón
+            setLoading(false)
+        }
+    }
+
+    return (
+        <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+            <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+                <div className="layout-container flex h-full grow flex-col">
+                    <div className="flex flex-1 justify-center items-center py-10 px-4 md:px-10">
+
+                        {/* Contenedor principal: columna en móvil, dos paneles en escritorio */}
+                        <div className="layout-content-container flex flex-col max-w-[1200px] w-full bg-white dark:bg-slate-900 shadow-2xl rounded-xl overflow-hidden md:flex-row min-h-[700px]">
+
+                            {/* ── PANEL IZQUIERDO: imagen decorativa (solo visible en escritorio) ── */}
+                            <div className="relative hidden md:flex md:w-1/2 bg-black overflow-hidden">
+
+                                {/* Imagen de fondo con degradado oscuro para mejorar legibilidad del texto.
+                                    backgroundPosition al 35% vertical encuadra mejor la torre */}
+                                <div
+                                    className="absolute inset-0 bg-cover"
+                                    style={{
+                                        backgroundPosition: 'center 35%',
+                                        backgroundImage:
+                                            "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('/images/colpatria_tower.jpg')",
+                                    }}
+                                />
+
+                                {/* Texto superpuesto, anclado al fondo del panel */}
+                                <div className="relative z-10 flex flex-col justify-end p-12 h-full w-full">
+                                    <h1 className="text-4xl font-bold text-white mb-4">Patrimonio360°</h1>
+                                    <p className="text-lg text-white/90 leading-relaxed">
+                                        Continua contribuyendo en nuestra comunidad y ayúdanos a preservar el vibrante
+                                        tapiz del patrimonio cultural e histórico de Colombia para las futuras
+                                        generaciones.
+                                    </p>
+                                    {/* Indicador decorativo tipo paginación (puntos de carrusel visual) */}
+                                    <div className="mt-8 flex gap-2">
+                                        <div className="w-12 h-1 bg-white rounded-full" />
+                                        <div className="w-2 h-1 bg-white/40 rounded-full" />
+                                        <div className="w-2 h-1 bg-white/40 rounded-full" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* ── PANEL DERECHO: formulario de inicio de sesión ── */}
+                            <div className="flex flex-col w-full md:w-1/2 p-8 lg:p-12 justify-center">
+                                <div className="mb-8">
+                                    <h2 className="text-3xl font-bold tracking-tight mb-2">Iniciar Sesión</h2>
+                                    <p className="text-slate-500 dark:text-slate-400">
+                                        Continua tu exploración de los tesoros de Colombia.
+                                    </p>
+                                </div>
+
+                                {/* noValidate desactiva la validación nativa del navegador;
+                                    toda la validación se maneja en los handlers de arriba */}
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full max-w-md" noValidate>
+
+                                    {/* ── Campo: Correo electrónico ── */}
+                                    <div className="flex flex-col gap-1.5">
+                                        <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                            Correo Electrónico
+                                        </label>
+                                        <div className="relative">
+                                            {/* Ícono posicionado absolutamente dentro del input */}
+                                            <img
+                                                src="/images/email_icon.png"
+                                                alt="Icono email"
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                            />
+                                            {/* aria-invalid y aria-describedby mejoran la accesibilidad
+                                                para lectores de pantalla */}
+                                            <input
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                placeholder="ejemplo@correo.com"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                aria-invalid={!!errors.email}
+                                                aria-describedby="emailError"
+                                                className={inputClass('email')}
+                                            />
+                                        </div>
+                                        {/* Mensaje de error: solo se renderiza si hay un error */}
+                                        {errors.email && (
+                                            <p id="emailError" className="text-red-500 text-xs mt-1" role="alert">
+                                                {errors.email}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {/* ── Campo: Contraseña ── */}
+                                    <div className="flex flex-col gap-1.5">
+                                        <div className="flex justify-between items-center">
+                                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                                Contraseña
+                                            </label>
+                                            {/* Enlace de recuperación alineado a la derecha del label */}
+                                            <a
+                                                href="#"
+                                                className="text-xs text-slate-500 hover:text-black dark:hover:text-white transition-colors"
+                                            >
+                                                ¿Olvidaste tu contraseña?
+                                            </a>
+                                        </div>
+                                        <div className="relative">
+                                            <img
+                                                src="/images/password_icon.png"
+                                                alt="Icono contraseña"
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                            />
+                                            {/* type cambia entre 'password' y 'text' según showPassword */}
+                                            <input
+                                                id="password"
+                                                name="password"
+                                                type={showPassword ? 'text' : 'password'}
+                                                placeholder="••••••••"
+                                                value={password}
+                                                onChange={handlePasswordChange}
+                                                aria-invalid={!!errors.password}
+                                                aria-describedby="passwordError"
+                                                className={inputClass('password', 'pr-12')}
+                                            />
+                                            {/* Ícono de ojo: alterna visibilidad de la contraseña al hacer click */}
+                                            <img
+                                                src={showPassword ? '/images/closed_eye_icon.png' : '/images/open_eye_icon.png'}
+                                                alt="Mostrar contraseña"
+                                                onClick={() => setShowPassword((v) => !v)}
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 cursor-pointer opacity-60 hover:opacity-100"
+                                            />
+                                        </div>
+                                        {errors.password && (
+                                            <p id="passwordError" className="text-red-500 text-xs mt-1" role="alert">
+                                                {errors.password}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {/* ── Botón de envío ──
+                                        Se deshabilita mientras loading=true para evitar doble envío */}
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full bg-black hover:bg-gray-900 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/25 transition-all flex justify-center items-center gap-2 disabled:opacity-60"
+                                    >
+                                        {/* Cambia el texto según si está procesando o no */}
+                                        {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+                                    </button>
+                                </form>
+
+                                <div className="relative my-8" />
+
+                                {/* Enlace de redirección para usuarios sin cuenta */}
+                                <div className="mt-10 text-center">
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                                        ¿No tienes una cuenta?{' '}
+                                        {/* Link de React Router: no recarga la página */}
+                                        <Link className="text-black font-semibold hover:underline ml-1" to="/register">
+                                            Regístrate aquí
+                                        </Link>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+</file>
+
+<file path="frontend/src/pages/Register.jsx">
+// Página de registro de nuevos usuarios.
+// Maneja validación en tiempo real de nombre, correo, contraseña,
+// confirmación de contraseña y aceptación de términos.
+// Envía los datos al endpoint POST /api/auth/register del backend.
+// Al registrarse guarda el token JWT en localStorage y redirige al inicio.
+
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+// Expresión regular para validar formato básico de correo: usuario@dominio.extensión
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Expresión regular para validar contraseña segura:
+// mínimo 8 caracteres, al menos 1 mayúscula, 1 dígito y 1 carácter especial
+const passwordRegex =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};':"\\|,.<>/?]).{8,}$/
+
+export default function Register() {
+    // useNavigate permite redirigir al usuario sin recargar la página
+    const navigate = useNavigate()
+
+    // ── Estado del formulario ──
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)   // controla visibilidad del campo contraseña
+    const [showConfirm, setShowConfirm] = useState(false)     // controla visibilidad del campo confirmar
+    const [terms, setTerms] = useState(false)                 // estado del checkbox de términos
+    const [errors, setErrors] = useState({
+        name: '', email: '', password: '', confirm: '', terms: '',
+    })                                                        // mensajes de error por campo
+    const [loading, setLoading] = useState(false)             // deshabilita el botón mientras se hace la petición
+
+    // Cambia el título de la pestaña al montar el componente
+    useEffect(() => {
+        document.title = 'Patrimonio360° - Registrarse'
+    }, [])
+
+    // ── Funciones de validación ──────────────────────────────────
+    // Reciben el valor del campo como parámetro (por defecto toman el estado)
+    // y retornan un string con el error, o vacío si es válido.
+    // Esto permite usarlas tanto en tiempo real como al enviar el form.
+
+    function validateName(v = name) {
+        // trim() evita que espacios en blanco pasen como nombre válido
+        if (!v.trim()) return 'El nombre es obligatorio.'
+        return ''
+    }
+
+    function validateEmail(v = email) {
+        if (!v.trim()) return 'El correo es obligatorio.'
+        if (!emailRegex.test(v.trim()))
+            return 'Ingrese un correo válido (ej: usuario@dominio.com).'
+        return ''
+    }
+
+    function validatePassword(v = password) {
+        if (!v) return 'La contraseña es obligatoria.'
+        if (!passwordRegex.test(v))
+            return 'Mínimo 8 caracteres, 1 mayúscula, 1 número y 1 carácter especial.'
+        return ''
+    }
+
+    function validateConfirm(v = confirmPassword, pass = password) {
+        if (!v) return 'Debes confirmar la contraseña.'
+        // Compara contra el valor actual de pass para detectar
+        // si el usuario cambió la contraseña después de confirmarla
+        if (v !== pass) return 'Las contraseñas no coinciden.'
+        return ''
+    }
+
+    function validateTerms(v = terms) {
+        if (!v) return 'Debes aceptar los términos.'
+        return ''
+    }
+
+    // Genera la clase CSS del input según si tiene error o no.
+    // extraPadding ajusta el padding derecho cuando hay ícono de ojo
+    function inputClass(field, extraPadding = 'pr-4') {
+        return `w-full pl-12 ${extraPadding} py-3 rounded-xl border ${errors[field]
+            ? 'border-red-300 ring-1 ring-red-400'       // borde rojo si hay error
+            : 'border-slate-200 dark:border-slate-700'   // borde normal si no hay error
+            } bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all`
+    }
+
+    // ── Handlers de cambio en tiempo real ────────────────────────
+    // Actualizan el estado y revalidan el campo mientras el usuario escribe
+
+    function handleNameChange(e) {
+        const v = e.target.value
+        setName(v)
+        setErrors((prev) => ({ ...prev, name: validateName(v) }))
+    }
+
+    function handleEmailChange(e) {
+        const v = e.target.value
+        setEmail(v)
+        setErrors((prev) => ({ ...prev, email: validateEmail(v) }))
+    }
+
+    function handlePasswordChange(e) {
+        const v = e.target.value
+        setPassword(v)
+        setErrors((prev) => ({
+            ...prev,
+            password: validatePassword(v),
+            // Si el usuario ya escribió algo en "confirmar", re-valida ese campo
+            // para reflejar si ahora las contraseñas coinciden o no
+            confirm: confirmPassword ? validateConfirm(confirmPassword, v) : prev.confirm,
+        }))
+    }
+
+    function handleConfirmChange(e) {
+        const v = e.target.value
+        setConfirmPassword(v)
+        setErrors((prev) => ({ ...prev, confirm: validateConfirm(v) }))
+    }
+
+    function handleTermsChange(e) {
+        // e.target.checked para checkboxes en lugar de e.target.value
+        const v = e.target.checked
+        setTerms(v)
+        setErrors((prev) => ({ ...prev, terms: validateTerms(v) }))
+    }
+
+    // ── Handler de envío del formulario ──────────────────────────
+    async function handleSubmit(e) {
+        e.preventDefault() // evita que el navegador recargue la página
+
+        // Valida todos los campos de una sola vez antes de enviar
+        const newErrors = {
+            name: validateName(),
+            email: validateEmail(),
+            password: validatePassword(),
+            confirm: validateConfirm(),
+            terms: validateTerms(),
+        }
+        setErrors(newErrors)
+
+        // Si algún campo tiene error, detiene el envío
+        if (Object.values(newErrors).some((v) => v)) return
+
+        setLoading(true)
+        try {
+            // Petición POST al backend con los datos del nuevo usuario
+            const response = await fetch('http://localhost:3000/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name.trim(),
+                    email: email.trim(),
+                    password,
+                    confirmPassword,
+                }),
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                // El servidor puede devolver errores por campo específico o un mensaje general
+                if (data.errors) {
+                    const serverErrors = { name: '', email: '', password: '', confirm: '', terms: '' }
+                    data.errors.forEach((err) => {
+                        if (err.field in serverErrors) serverErrors[err.field] = err.message
+                    })
+                    setErrors(serverErrors)
+                } else {
+                    // Error genérico (ej: el correo ya está registrado)
+                    alert(data.message || 'Ocurrió un error. Inténtalo de nuevo.')
+                }
+                return
+            }
+
+            // Registro exitoso: guarda el token y datos del usuario en localStorage
+            // para mantener la sesión activa entre recargas de página
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', JSON.stringify(data.user))
+
+            // Redirige a la página principal
+            navigate('/')
+        } catch (err) {
+            // Error de red: el backend no está corriendo o hay problemas de conexión
+            console.error('Error de conexión:', err)
+            alert('No se pudo conectar con el servidor. Verifica tu conexión.')
+        } finally {
+            // Se ejecuta siempre, haya error o no, para rehabilitar el botón
+            setLoading(false)
+        }
+    }
+
+    return (
+        <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+            <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+                <div className="layout-container flex h-full grow flex-col">
+                    <div className="flex flex-1 justify-center items-center py-10 px-4 md:px-10">
+
+                        {/* Contenedor principal: columna en móvil, dos paneles en escritorio */}
+                        <div className="layout-content-container flex flex-col max-w-[1200px] w-full bg-white dark:bg-slate-900 shadow-2xl rounded-xl overflow-hidden md:flex-row min-h-[700px]">
+
+                            {/* ── PANEL IZQUIERDO: imagen decorativa (solo visible en escritorio) ── */}
+                            <div className="relative hidden md:flex md:w-1/2 bg-black overflow-hidden">
+
+                                {/* Imagen de fondo con degradado oscuro para mejorar legibilidad del texto */}
+                                <div
+                                    className="absolute inset-0 bg-cover bg-center"
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('/images/cartagena_street.jpg')",
+                                    }}
+                                />
+
+                                {/* Texto superpuesto, anclado al fondo del panel */}
+                                <div className="relative z-10 flex flex-col justify-end p-12 h-full w-full">
+                                    <h1 className="text-4xl font-bold text-white mb-4">Patrimonio360°</h1>
+                                    <p className="text-lg text-white/90 leading-relaxed">
+                                        Únete a nuestra comunidad y ayúdanos a preservar el vibrante tapiz del
+                                        patrimonio cultural e histórico de Colombia para las futuras generaciones.
+                                    </p>
+                                    {/* Indicador decorativo tipo paginación (puntos de carrusel visual) */}
+                                    <div className="mt-8 flex gap-2">
+                                        <div className="w-12 h-1 bg-white rounded-full" />
+                                        <div className="w-2 h-1 bg-white/40 rounded-full" />
+                                        <div className="w-2 h-1 bg-white/40 rounded-full" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* ── PANEL DERECHO: formulario de registro ── */}
+                            <div className="flex flex-col w-full md:w-1/2 p-8 lg:p-12 justify-center">
+                                <div className="mb-8">
+                                    <h2 className="text-3xl font-bold tracking-tight mb-2">Crear Cuenta</h2>
+                                    <p className="text-slate-500 dark:text-slate-400">
+                                        Comienza tu exploración de los tesoros de Colombia hoy mismo.
+                                    </p>
+                                </div>
+
+                                {/* noValidate desactiva la validación nativa del navegador;
+                                    toda la validación se maneja en los handlers de arriba */}
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full max-w-md" noValidate>
+
+                                    {/* ── Campo: Nombre completo ── */}
+                                    <div className="flex flex-col gap-1.5">
+                                        <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                            Nombre Completo
+                                        </label>
+                                        <div className="relative">
+                                            {/* Ícono posicionado absolutamente dentro del input */}
+                                            <img
+                                                src="/images/user_icon.png"
+                                                alt="Icono usuario"
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                            />
+                                            {/* aria-invalid y aria-describedby mejoran la accesibilidad
+                                                para lectores de pantalla */}
+                                            <input
+                                                id="name"
+                                                name="name"
+                                                type="text"
+                                                placeholder="Juan Pérez"
+                                                value={name}
+                                                onChange={handleNameChange}
+                                                aria-invalid={!!errors.name}
+                                                aria-describedby="nameError"
+                                                className={inputClass('name')}
+                                            />
+                                        </div>
+                                        {/* Mensaje de error: solo se renderiza si hay un error */}
+                                        {errors.name && (
+                                            <p id="nameError" className="text-red-500 text-xs mt-1" role="alert">
+                                                {errors.name}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {/* ── Campo: Correo electrónico ── */}
+                                    <div className="flex flex-col gap-1.5">
+                                        <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                            Correo Electrónico
+                                        </label>
+                                        <div className="relative">
+                                            <img
+                                                src="/images/email_icon.png"
+                                                alt="Icono email"
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                            />
+                                            <input
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                placeholder="ejemplo@correo.com"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                aria-invalid={!!errors.email}
+                                                aria-describedby="emailError"
+                                                className={inputClass('email')}
+                                            />
+                                        </div>
+                                        {errors.email && (
+                                            <p id="emailError" className="text-red-500 text-xs mt-1" role="alert">
+                                                {errors.email}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {/* ── Campos: Contraseña + Confirmar (grid de 2 columnas en sm+) ── */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                                        {/* Campo: Contraseña */}
+                                        <div className="flex flex-col gap-1.5">
+                                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                                Contraseña
+                                            </label>
+                                            <div className="relative">
+                                                <img
+                                                    src="/images/password_icon.png"
+                                                    alt="Icono contraseña"
+                                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                                />
+                                                {/* type cambia entre 'password' y 'text' según showPassword */}
+                                                <input
+                                                    id="password"
+                                                    name="password"
+                                                    type={showPassword ? 'text' : 'password'}
+                                                    placeholder="••••••••"
+                                                    value={password}
+                                                    onChange={handlePasswordChange}
+                                                    aria-invalid={!!errors.password}
+                                                    aria-describedby="passwordError"
+                                                    className={inputClass('password', 'pr-12')}
+                                                />
+                                                {/* Ícono de ojo: alterna visibilidad de la contraseña */}
+                                                <img
+                                                    src={
+                                                        showPassword
+                                                            ? '/images/closed_eye_icon.png'
+                                                            : '/images/open_eye_icon.png'
+                                                    }
+                                                    alt="Mostrar contraseña"
+                                                    onClick={() => setShowPassword((v) => !v)}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 cursor-pointer opacity-60 hover:opacity-100"
+                                                />
+                                            </div>
+                                            {errors.password && (
+                                                <p id="passwordError" className="text-red-500 text-xs mt-1" role="alert">
+                                                    {errors.password}
+                                                </p>
+                                            )}
+                                        </div>
+
+                                        {/* Campo: Confirmar contraseña — ícono de ojo independiente */}
+                                        <div className="flex flex-col gap-1.5">
+                                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                                Confirmar Contraseña
+                                            </label>
+                                            <div className="relative">
+                                                <img
+                                                    src="/images/confirm_password_icon.png"
+                                                    alt="Icono confirmar contraseña"
+                                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60"
+                                                />
+                                                <input
+                                                    id="confirmPassword"
+                                                    name="confirmPassword"
+                                                    type={showConfirm ? 'text' : 'password'}
+                                                    placeholder="••••••••"
+                                                    value={confirmPassword}
+                                                    onChange={handleConfirmChange}
+                                                    aria-invalid={!!errors.confirm}
+                                                    aria-describedby="confirmPasswordError"
+                                                    className={inputClass('confirm', 'pr-12')}
+                                                />
+                                                <img
+                                                    src={
+                                                        showConfirm
+                                                            ? '/images/closed_eye_icon.png'
+                                                            : '/images/open_eye_icon.png'
+                                                    }
+                                                    alt="Mostrar contraseña"
+                                                    onClick={() => setShowConfirm((v) => !v)}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 cursor-pointer opacity-60 hover:opacity-100"
+                                                />
+                                            </div>
+                                            {errors.confirm && (
+                                                <p id="confirmPasswordError" className="text-red-500 text-xs mt-1" role="alert">
+                                                    {errors.confirm}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* ── Campo: Aceptación de términos ── */}
+                                    <div className="flex flex-col gap-1.5">
+                                        <div className="flex items-start gap-3">
+                                            {/* htmlFor vincula este label con el checkbox por su id */}
+                                            <input
+                                                id="terms"
+                                                name="terms"
+                                                type="checkbox"
+                                                checked={terms}
+                                                onChange={handleTermsChange}
+                                                aria-describedby="termsError"
+                                                className="mt-1 rounded border-slate-300 dark:border-slate-600 text-black focus:ring-black h-4 w-4"
+                                            />
+                                            <label
+                                                htmlFor="terms"
+                                                className="text-xs text-slate-500 dark:text-slate-400 leading-normal"
+                                            >
+                                                Acepto los{' '}
+                                                <a href="#" className="text-black font-semibold hover:underline">
+                                                    Términos de Servicio
+                                                </a>{' '}
+                                                y la{' '}
+                                                <a href="#" className="text-black font-semibold hover:underline">
+                                                    Política de Privacidad
+                                                </a>
+                                                .
+                                            </label>
+                                        </div>
+                                        {errors.terms && (
+                                            <p id="termsError" className="text-red-500 text-xs" role="alert">
+                                                {errors.terms}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {/* ── Botón de envío ──
+                                        Se deshabilita mientras loading=true para evitar doble envío */}
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full bg-black hover:bg-gray-900 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/25 transition-all flex justify-center items-center gap-2 disabled:opacity-60"
+                                    >
+                                        {/* Cambia el texto según si está procesando o no */}
+                                        {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
+                                    </button>
+                                </form>
+
+                                <div className="relative my-8" />
+
+                                {/* Enlace de redirección para usuarios que ya tienen cuenta */}
+                                <div className="mt-10 text-center">
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                                        ¿Ya tienes una cuenta?{' '}
+                                        {/* Link de React Router: no recarga la página */}
+                                        <Link className="text-black font-semibold hover:underline ml-1" to="/login">
+                                            Inicia sesión aquí
+                                        </Link>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+</file>
+
+<file path="frontend/tailwind.config.js">
+// Configuración de Tailwind CSS.
+// Define los archivos que Tailwind debe escanear para generar solo el CSS que realmente se usa (content), y extiende el tema con colores, fuentes y radios de borde propios del proyecto.
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+    darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                primary: '#000000',
+                'background-light': '#f8f6f6',
+                'background-dark': '#221610',
+            },
+            fontFamily: {
+                display: ['Public Sans', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+                DEFAULT: '0.25rem',
+                lg: '0.5rem',
+                xl: '0.75rem',
+                full: '9999px',
+            },
+        },
+    },
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/container-queries'),
+    ],
+}
+</file>
+
+<file path="frontend/vite.config.js">
+// Configuración de Vite, el bundler y servidor de desarrollo.
+// Registra el plugin de React para que Vite pueda procesar archivos JSX y manejar el hot-reload automático.
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+    plugins: [react()],
+})
+</file>
+
+<file path="backend/src/config/db.js">
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGODB_URI);
+        console.log(`MongoDB conectado: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error al conectar MongoDB: ${error.message}`);
+        process.exit(1);
+    }
+};
+
+module.exports = connectDB;
+</file>
+
+<file path="frontend/index.html">
+<!-- 
+  Punto de entrada de la aplicación React.
+  Vite usa este archivo como base para inyectar el bundle generado.
+  El div#root es donde React monta toda la aplicación.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/images/logo.jpg" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Public+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        rel="stylesheet" />
+    <title>Patrimonio360°</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
+</file>
+
+<file path="backend/package.json">
+{
+  "name": "patrimonio360-backend",
+  "version": "1.0.0",
+  "description": "Backend API para Patrimonio360°",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
+</file>
+
+<file path="backend/src/controllers/authController.js">
+const jwt = require('jsonwebtoken');
+const { validationResult } = require('express-validator');
+const User = require('../models/user');
+
+// Crea un token de sesión con el ID del usuario
+const generateToken = (userId) => {
+    return jwt.sign(
+        { id: userId },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN }
+    );
+};
+
+// REGISTRO - Crea un usuario nuevo
+const register = async (req, res) => {
+    try {
+        // Si hay errores de validación (campos vacíos, correo mal escrito, etc.) los devuelve
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ success: false, errors: errors.array() });
+        }
+
+        const { name, email, password } = req.body;
+
+        // Verifica que el correo no esté registrado ya
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({ success: false, message: 'Este correo ya está registrado.' });
+        }
+
+        // Crea el usuario en MongoDB (la contraseña se hashea automáticamente en User.js)
+        const newUser = await User.create({ name, email, password });
+
+        // Genera el token de sesión
+        const token = generateToken(newUser._id);
+
+        // Responde con el token y los datos básicos del usuario
+        res.status(201).json({
+            success: true,
+            message: 'Cuenta creada',
+            token,
+            user: {
+                id: newUser._id,
+                name: newUser.name,
+                email: newUser.email,
+            },
+        });
+
+    } catch (error) {
+        console.error('Error en registro:', error);
+        res.status(500).json({ success: false, message: 'Error del servidor.' });
+    }
+};
+
+// LOGIN - Inicia sesión con correo y contraseña
+const login = async (req, res) => {
+    try {
+        // Si hay errores de validación los devuelve
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ success: false, errors: errors.array() });
+        }
+
+        const { email, password } = req.body;
+
+        // Busca el usuario por correo (incluye la contraseña que normalmente está oculta)
+        const user = await User.findOne({ email }).select('+password');
+
+        // Si no existe el usuario o la contraseña es incorrecta, responde con error
+        // Se juntan los dos checks para no dar pistas de cuál falló
+        if (!user || !(await user.comparePassword(password))) {
+            return res.status(401).json({ success: false, message: 'Correo o contraseña incorrectos.' });
+        }
+
+        // Genera el token de sesión
+        const token = generateToken(user._id);
+
+        // Responde con el token y los datos básicos del usuario
+        res.status(200).json({
+            success: true,
+            message: 'Bienvenido',
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+            },
+        });
+
+    } catch (error) {
+        console.error('Error en login:', error);
+        res.status(500).json({ success: false, message: 'Error del servidor.' });
+    }
+};
+
+// PERFIL - Devuelve los datos del usuario que está logueado
+const getMe = async (req, res) => {
+    try {
+        // req.user.id viene del middleware authMiddleware.js que verificó el token
+        const user = await User.findById(req.user.id);
+        res.status(200).json({ success: true, user });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error del servidor.' });
+    }
+};
+
+module.exports = { register, login, getMe };
+</file>
+
+<file path="backend/src/controllers/locationController.js">
+const Location = require('../models/Location');
+
+// Obtener todos los sitios
+const getLocations = async (req, res) => {
+    try {
+        const locations = await Location.find({ activo: true });
+        res.status(200).json({ success: true, data: locations });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al obtener sitios.' });
+    }
+};
+
+// Obtener un sitio por ID
+const getLocation = async (req, res) => {
+    try {
+        const location = await Location.findById(req.params.id);
+        if (!location) {
+            return res.status(404).json({ success: false, message: 'Sitio no encontrado.' });
+        }
+        res.status(200).json({ success: true, data: location });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al obtener el sitio.' });
+    }
+};
+
+// Crear un sitio (solo admin)
+const createLocation = async (req, res) => {
+    try {
+        const location = await Location.create(req.body);
+        res.status(201).json({ success: true, data: location });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al crear el sitio.' });
+    }
+};
+
+// Actualizar un sitio (solo admin)
+const updateLocation = async (req, res) => {
+    try {
+        const location = await Location.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true,
+        });
+        if (!location) {
+            return res.status(404).json({ success: false, message: 'Sitio no encontrado.' });
+        }
+        res.status(200).json({ success: true, data: location });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al actualizar el sitio.' });
+    }
+};
+
+// Eliminar un sitio (solo admin)
+const deleteLocation = async (req, res) => {
+    try {
+        const location = await Location.findByIdAndDelete(req.params.id);
+        if (!location) {
+            return res.status(404).json({ success: false, message: 'Sitio no encontrado.' });
+        }
+        res.status(200).json({ success: true, message: 'Sitio eliminado correctamente.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al eliminar el sitio.' });
+    }
+};
+
+module.exports = { getLocations, getLocation, createLocation, updateLocation, deleteLocation };
+</file>
+
+<file path="backend/src/middleware/authMiddleware.js">
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+
+// PROTECT - Verifica que el usuario esté logueado antes de entrar a una ruta protegida
+// Se usa en las rutas así: router.get('/me', protect, getMe)
+const protect = async (req, res, next) => {
+    try {
+        // Extrae el token del header Authorization: "Bearer <token>"
+        let token;
+        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+
+        // Si no hay token, el usuario no está logueado
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'No estás autenticado.' });
+        }
+
+        // Verifica que el token sea válido y extrae el ID del usuario
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Busca el usuario en MongoDB con ese ID
+        const currentUser = await User.findById(decoded.id);
+        if (!currentUser) {
+            return res.status(401).json({ success: false, message: 'El usuario no existe.' });
+        }
+
+        // Adjunta el usuario a la petición para que el controlador lo pueda usar
+        req.user = currentUser;
+
+        // Pasa al siguiente paso (el controlador)
+        next();
+
+    } catch (error) {
+        return res.status(401).json({ success: false, message: 'Token inválido o expirado.' });
+    }
+};
+
+// RESTRICTTO - Verifica que el usuario tenga el rol necesario (por ejemplo 'admin')
+// Se usa en las rutas así: router.post('/', protect, restrictTo('admin'), createLocation)
+const restrictTo = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return res.status(403).json({ success: false, message: 'No tienes permiso.' });
+        }
+        next();
+    };
+};
+
+module.exports = { protect, restrictTo };
+</file>
+
+<file path="backend/src/models/Location.js">
+const mongoose = require('mongoose');
+
+const locationSchema = new mongoose.Schema(
+    {
+        nombre: {
+            type: String,
+            required: [true, 'El nombre es obligatorio'],
+            trim: true,
+        },
+        descripcion: {
+            type: String,
+            required: [true, 'La descripción es obligatoria'],
+        },
+        categoria: {
+            type: String,
+            enum: ['arqueologico', 'colonial', 'natural', 'cultural', 'religioso'],
+            default: 'cultural',
+        },
+        imagen: {
+            type: String,
+            default: '',
+        },
+        coordenadas: {
+            lat: { type: Number, required: true },
+            lng: { type: Number, required: true },
+        },
+        activo: {
+            type: Boolean,
+            default: true,
+        },
+    },
+    { timestamps: true }
+);
+
+module.exports = mongoose.model('Location', locationSchema);
+</file>
+
+<file path="backend/src/models/user.js">
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = new mongoose.Schema(
+    {
+        // Nombre del usuario
+        name: {
+            type: String,
+            required: [true, 'El nombre es obligatorio'],
+            trim: true,
+        },
+        // Correo único, siempre en minúsculas
+        email: {
+            type: String,
+            required: [true, 'El correo es obligatorio'],
+            unique: true,
+            lowercase: true,
+            trim: true,
+        },
+        // Contraseña hasheada, nunca se devuelve en consultas
+        password: {
+            type: String,
+            required: [true, 'La contraseña es obligatoria'],
+            minlength: [8, 'Mínimo 8 caracteres'],
+            select: false,
+        },
+        // Rol del usuario: 'user' normal o 'admin'
+        role: {
+            type: String,
+            enum: ['user', 'admin'],
+            default: 'user',
+        },
+    },
+    {
+        timestamps: true, // agrega createdAt y updatedAt automáticamente
+    }
+);
+
+// Antes de guardar, hashea la contraseña automáticamente
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
+});
+
+// Método para comparar contraseña en el login
+userSchema.methods.comparePassword = async function (candidatePassword) {
+    return bcrypt.compare(candidatePassword, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
+</file>
+
+<file path="backend/src/routes/locationRoutes.js">
+const express = require('express');
+const {
+    getLocations,
+    getLocation,
+    createLocation,
+    updateLocation,
+    deleteLocation,
+} = require('../controllers/locationController');
+const { protect, restrictTo } = require('../middleware/authMiddleware');
+
+const router = express.Router();
+
+// Rutas públicas — cualquiera puede ver los sitios
+router.get('/', getLocations);
+router.get('/:id', getLocation);
+
+// Rutas protegidas — solo admins pueden crear, editar y eliminar
+router.post('/', protect, restrictTo('admin'), createLocation);
+router.put('/:id', protect, restrictTo('admin'), updateLocation);
+router.delete('/:id', protect, restrictTo('admin'), deleteLocation);
+
+module.exports = router;
+</file>
+
+<file path="backend/src/app.js">
+// Carga las variables del archivo .env
+require('dotenv').config();
+
+const express = require('express');
+const cors = require('cors');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const locationRoutes = require('./routes/locationRoutes');
+
+// Conecta a MongoDB Atlas
+connectDB();
+
+const app = express();
+
+// Permite que el frontend (otro puerto) se comunique con el backend
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Permite que el servidor lea datos JSON que envía el frontend
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Rutas de autenticación: /api/auth/register, /api/auth/login
+app.use('/api/auth', authRoutes);
+
+// Rutas de sitios del mapa: /api/locations
+app.use('/api/locations', locationRoutes);
+
+// Ruta para verificar que el servidor está corriendo
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', message: 'Servidor Patrimonio360° funcionando 🇨🇴' });
+});
+
+// Si llaman a una ruta que no existe responde con 404
+app.use((req, res) => {
+    res.status(404).json({ success: false, message: 'Ruta no encontrada.' });
+});
+
+// Arranca el servidor en el puerto 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
+</file>
+
+<file path="backend/src/routes/authRoutes.js">
+const express = require('express');
+const { body } = require('express-validator');
+const { register, login, getMe } = require('../controllers/authController');
+const { protect } = require('../middleware/authMiddleware');
+
+const router = express.Router();
+
+// Validaciones del registro (segunda capa de seguridad después del frontend)
+const registerValidation = [
+    body('name').trim().notEmpty().withMessage('El nombre es obligatorio.'),
+    body('email').trim().isEmail().withMessage('Correo inválido.').normalizeEmail(),
+    body('password').isLength({ min: 8 }).withMessage('Mínimo 8 caracteres.'),
+    body('confirmPassword').custom((value, { req }) => {
+        if (value !== req.body.password) throw new Error('Las contraseñas no coinciden.');
+        return true;
+    }),
+];
+
+// Validaciones básicas del login
+const loginValidation = [
+    body('email').trim().isEmail().withMessage('Correo inválido.').normalizeEmail(),
+    body('password').notEmpty().withMessage('La contraseña es obligatoria.'),
+];
+
+// Rutas públicas
+router.post('/register', registerValidation, register);
+router.post('/login', loginValidation, login);
+
+// Ruta protegida — requiere token válido
+router.get('/me', protect, getMe);
+
+module.exports = router;
+</file>
+
+</files>

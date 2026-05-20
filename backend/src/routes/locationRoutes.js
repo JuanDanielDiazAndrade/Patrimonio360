@@ -5,13 +5,19 @@ const {
     createLocation,
     updateLocation,
     deleteLocation,
+    getAllLocations,
 } = require('../controllers/locationController');
 const { protect, restrictTo } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// Rutas públicas — cualquiera puede ver los sitios
+// Ruta pública — cualquiera puede ver el sitio
 router.get('/', getLocations);
+
+// Ruta protegida — solo admins pueden ver todos los sitios
+router.get('/all', protect, restrictTo('admin'), getAllLocations);
+
+// Ruta pública — cualquiera puede ver el sitio
 router.get('/:id', getLocation);
 
 // Rutas protegidas — solo admins pueden crear, editar y eliminar

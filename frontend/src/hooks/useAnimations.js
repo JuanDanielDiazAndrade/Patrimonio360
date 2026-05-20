@@ -1,8 +1,14 @@
+// useAnimations.js
+// Animaciones exclusivas de Home.jsx (POR AHORA):
+//   · Scroll reveal para secciones, cards y features
+//   · Hover de escala en imágenes (solo Home)
+//   · Hover de escala en botones <button>
+
 import { useEffect } from 'react'
 
 export default function useAnimations() {
     useEffect(() => {
-        // Animación de aparición al hacer scroll
+        // ── Scroll reveal ──────────────────────────────────────
         const elementos = document.querySelectorAll(
             'section, .highlight-card, .feature-item, .testimonial-card'
         )
@@ -21,7 +27,7 @@ export default function useAnimations() {
             observer.observe(el)
         })
 
-        // Animación botones
+        // ── Hover en botones <button> ───────────────────────────────
         const handleEnterBtn = (e) => {
             e.currentTarget.style.transform = 'scale(1.05)'
             e.currentTarget.style.transition = 'transform 0.2s ease'
@@ -29,13 +35,13 @@ export default function useAnimations() {
         const handleLeaveBtn = (e) => {
             e.currentTarget.style.transform = 'scale(1)'
         }
-        const botones = document.querySelectorAll('a')
+        const botones = document.querySelectorAll('main button, footer button')
         botones.forEach((btn) => {
             btn.addEventListener('mouseenter', handleEnterBtn)
             btn.addEventListener('mouseleave', handleLeaveBtn)
         })
 
-        // Animación imágenes
+        // ── Hover en imágenes (exclusivo de Home) ──────────────
         const handleEnterImg = (e) => {
             e.currentTarget.style.transform = 'scale(1.03)'
             e.currentTarget.style.transition = 'transform 0.4s ease'
@@ -43,7 +49,7 @@ export default function useAnimations() {
         const handleLeaveImg = (e) => {
             e.currentTarget.style.transform = 'scale(1)'
         }
-        const imagenes = document.querySelectorAll('img')
+        const imagenes = document.querySelectorAll('main img')
         imagenes.forEach((img) => {
             img.addEventListener('mouseenter', handleEnterImg)
             img.addEventListener('mouseleave', handleLeaveImg)

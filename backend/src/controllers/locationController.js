@@ -3,7 +3,7 @@ const Location = require('../models/Location');
 // Obtener todos los sitios
 const getLocations = async (req, res) => {
     try {
-        const locations = await Location.find({ activo: true });
+        const locations = await Location.find({ active: true });
         res.status(200).json({ success: true, data: locations });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Error al obtener sitios.' });
@@ -62,4 +62,14 @@ const deleteLocation = async (req, res) => {
     }
 };
 
-module.exports = { getLocations, getLocation, createLocation, updateLocation, deleteLocation };
+// ADMIN — devuelve todos los sitios sin importar si están activos o no
+const getAllLocations = async (req, res) => {
+    try {
+        const locations = await Location.find().sort({ createdAt: -1 });
+        res.status(200).json({ success: true, data: locations });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al obtener sitios.' });
+    }
+};
+
+module.exports = { getLocations, getLocation, createLocation, updateLocation, deleteLocation, getAllLocations };

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require('../models/User');
 
 // PROTECT - Verifica que el usuario esté logueado antes de entrar a una ruta protegida
 // Se usa en las rutas así: router.get('/me', protect, getMe)
